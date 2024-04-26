@@ -1,14 +1,26 @@
-import React from "react";
-import ProjectItem from "./ProjectItem";
-
+import React from 'react';
+import ProjectItem from './ProjectItem';
+import projects from '../data/user';
+// console.log(projects); Objectt
 function ProjectList({ projects }) {
-  console.log(projects);
-  return (
-    <div id="projects">
-      <h2>My Projects</h2>
-      <div id="project-list">{/* render ProjectItem components here */}</div>
-    </div>
-  );
+	console.log(projects);
+	const projectList = projects.map((project) => {
+		return (
+			<ProjectItem
+				key={project.id}
+				about={project.about}
+				name={project.name}
+				technologies={project.technologies}
+			/>
+		);
+	});
+
+	return (
+		<div id='projects'>
+			<h2>My Projects</h2>
+			<div id='project-list'>{projectList}</div>
+		</div>
+	);
 }
 
 export default ProjectList;
